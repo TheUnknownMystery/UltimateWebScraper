@@ -1,13 +1,13 @@
 name: Python Package using Conda
 
-on: 
- push:
-  branches:
-    - main
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
-   runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -15,11 +15,9 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.10
-    - name: Add libs
-      run: |
-        # libaries for my code
-    - name: Install dependencies
-      run: |
-        pip install asyncio datetime playwright
-      run: |
-        python main.py
+      - run: |
+          echo "Installing extra packages"
+      - run: |
+          pip install asyncio datetime playwright
+      - run: |
+          python main.py
