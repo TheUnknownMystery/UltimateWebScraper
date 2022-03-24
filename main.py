@@ -1,9 +1,7 @@
 import asyncio
 from datetime import date
-# a
-from playwright.async_api import async_playwright
 
-# code change
+from playwright.async_api import async_playwright
 
 
 async def main():
@@ -21,6 +19,9 @@ async def main():
 
         for link in media_link:
             open(f'bbc-hm-pg-{date.today()}.txt', 'a').write(f'{await link.get_property("href")}, \n')
+
+        await page.goto('https://www.foxnews.com/')
+        await page.screenshot(path=f'fox-hm-pg-{date.today()}.png', full_page=True)
 
         await page.close()
 
